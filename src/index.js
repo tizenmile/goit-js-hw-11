@@ -27,10 +27,10 @@ function getDataFromPixabay(name, pagePagination) {
 }
 
 getForm.addEventListener('submit', pushData);
-
+let pagePagination = 1;
 function pushData(event) {
   event.preventDefault();
-  let pagePagination = 1;
+  pagePagination = 1;
   const dataForm = new FormData(getForm);
   const data = dataForm.get('searchQuery');
   document.querySelector('.gallery').innerHTML = '';
