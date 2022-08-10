@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-import { fetchFromPixabay } from './js/fetch.js';
+import { fetchFromPixabay, pagePagination } from './js/fetch.js';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 const loadBtn = document.querySelector('.load-more');
