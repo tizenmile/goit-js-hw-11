@@ -1,7 +1,13 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  overflow: hidden;
+}
+
 .header-seach {
   background-color: rgb(37, 37, 199);
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 15px;
 }
 
 .header-form {
@@ -27,6 +33,7 @@
 }
 
 .gallery {
+  margin-top: 70px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 380px);
   grid-gap: 1rem;
