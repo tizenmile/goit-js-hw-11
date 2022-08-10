@@ -49,16 +49,19 @@ function loadMore() {
   const dataForm = new FormData(getForm);
   const data = dataForm.get('searchQuery');
   pagePagination++;
-  const { height: cardHeight } = document
-    .querySelector('.gallery')
-    .firstElementChild.getBoundingClientRect();
+
   getDataFromPixabay(data, pagePagination);
-  setTimeout(() => {
-    window.scrollBy({
-      top: cardHeight * 2,
-      behavior: 'smooth',
-    });
-  }, 250);
+
+  // disabled, becouse infinity scroll is enabled
+//   const { height: cardHeight } = document
+//     .querySelector('.gallery')
+//     .firstElementChild.getBoundingClientRect();
+//   setTimeout(() => {
+//     window.scrollBy({
+//       top: cardHeight * 2,
+//       behavior: 'smooth',
+//     });
+//   }, 250);
 }
 
 function renderImg({
@@ -96,11 +99,15 @@ function renderImg({
   let gallery = new SimpleLightbox('.gallery a');
   gallery.refresh();
 }
+
+// infinity scroll
 window.addEventListener('scroll', () => {
   if (
     window.scrollY + window.innerHeight >=
     document.documentElement.scrollHeight * 0.9
   ) {
-    loadMore();
+    setTimeout(() => {
+      loadMore();
+    }, 250);
   }
 });
