@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-import { fetchFromPixabay, pagePagination } from './js/fetch.js';
+import { fetchFromPixabay } from './js/fetch.js';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 const loadBtn = document.querySelector('.load-more');
@@ -30,7 +30,7 @@ getForm.addEventListener('submit', pushData);
 
 function pushData(event) {
   event.preventDefault();
-  pagePagination = 1;
+  let pagePagination = 1;
   const dataForm = new FormData(getForm);
   const data = dataForm.get('searchQuery');
   document.querySelector('.gallery').innerHTML = '';

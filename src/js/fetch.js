@@ -1,5 +1,4 @@
 const axios = require('axios');
-let pagePagination = 1;
 const fetchFromPixabay = async (searchName, pagePagination) => {
   const key = '29059571-ec18f33066846ba93eec17670';
   const getData = axios
@@ -21,4 +20,4 @@ const fetchFromPixabay = async (searchName, pagePagination) => {
   return getData;
 };
 
-export { fetchFromPixabay, pagePagination };
+export { fetchFromPixabay };
