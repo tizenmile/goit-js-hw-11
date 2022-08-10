@@ -2,6 +2,7 @@ import Notiflix from 'notiflix';
 import { fetchFromPixabay } from './js/fetch.js';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+var throttle = require('lodash.throttle');
 const loadBtn = document.querySelector('.load-more');
 const getForm = document.querySelector('.header-form');
 let gallery = '';
@@ -53,15 +54,15 @@ function loadMore() {
   getDataFromPixabay(data, pagePagination);
 
   // disabled, becouse infinity scroll is enabled
-//   const { height: cardHeight } = document
-//     .querySelector('.gallery')
-//     .firstElementChild.getBoundingClientRect();
-//   setTimeout(() => {
-//     window.scrollBy({
-//       top: cardHeight * 2,
-//       behavior: 'smooth',
-//     });
-//   }, 250);
+  //   const { height: cardHeight } = document
+  //     .querySelector('.gallery')
+  //     .firstElementChild.getBoundingClientRect();
+  //   setTimeout(() => {
+  //     window.scrollBy({
+  //       top: cardHeight * 2,
+  //       behavior: 'smooth',
+  //     });
+  //   }, 250);
 }
 
 function renderImg({
@@ -101,13 +102,14 @@ function renderImg({
 }
 
 // infinity scroll
-window.addEventListener('scroll', () => {
-  if (
-    window.scrollY + window.innerHeight >=
-    document.documentElement.scrollHeight * 0.9
-  ) {
-    setTimeout(() => {
+window.addEventListener(
+  'scroll',
+  throttle(function () {
+    if (
+      window.scrollY + window.innerHeight >=
+      document.documentElement.scrollHeight * 0.9
+    ) {
       loadMore();
-    }, 250);
-  }
-});
+    }
+  }, 1000)
+);
